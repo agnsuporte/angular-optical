@@ -1,0 +1,38 @@
+.max-width {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 80%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .form-card {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-width: 120px;
+    margin: 20px auto;
+  }
+  
+  .card-title {
+    text-align: left;
+    margin: 25px 0 55px 0;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+  

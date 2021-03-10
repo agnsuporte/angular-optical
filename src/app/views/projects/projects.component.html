@@ -1,0 +1,84 @@
+<mat-divider></mat-divider>
+<div class="heard">
+  <h1>Projetos Registrados</h1>
+  <div>
+    <a href="#" routerLink="new" mat-raised-button color="primary">
+      <span class="material-icons"> add </span> Novo
+    </a>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div class="table">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="col-id">
+        Id
+      </th>
+      <td mat-cell *matCellDef="let row" class="col-id">{{ row.id }}</td>
+    </ng-container>
+
+    <!-- Company Column -->
+    <ng-container matColumnDef="projectName" class="ocultar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Projeto</th>
+      <td mat-cell *matCellDef="let row">{{ row.projectName }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="projectCompany">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Empresa</th>
+      <td mat-cell *matCellDef="let row">{{ row.projectCompany }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="Networks">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Rede</th>
+      <td mat-cell *matCellDef="let row">{{ row.Networks.length }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef >Data</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.createdAt | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef >Atualizado</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row.updatedAt | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="mobile" style="width: 8rem">
+        Ações
+      </th>
+      <td mat-cell *matCellDef="let row" class="mobile" style="width: 8rem">
+        <a mat-button routerLink="update/{{ row.id }}" color="primary">
+          <span class="material-icons"> drive_file_rename_outline </span>
+        </a>
+
+        <button mat-button color="warn" (click)="onDelete(row.id)">
+          <span class="material-icons"> delete </span>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    [length]="dataSource?.data.length"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50, 100]"
+  >
+  </mat-paginator>
+</div>

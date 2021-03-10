@@ -1,0 +1,57 @@
+<form [formGroup]="projectForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="form-card">
+      <div class="max-width">
+        <div class="card-title">
+          <h1>{{ title }} </h1>
+        </div>
+  
+        <mat-card-content>
+          <div class="row">
+            <mat-form-field class="">
+              <input
+                matInput
+                placeholder="Nome do Projeto"
+                formControlName="projectName"
+              />
+              <mat-error
+                *ngIf="projectForm.controls['projectName'].hasError('required')"
+              >
+                O nome do Projeto é <strong>Obrigatório</strong>
+              </mat-error>
+              <mat-error
+                *ngIf="projectForm.controls['projectName'].hasError('maxlength')"
+              >
+                O nome do Projeto deve possuir no
+                <strong>máximo 50 caracteres</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="row">
+            <mat-form-field class="">
+              <input
+                matInput
+                placeholder="Empresa"
+                formControlName="projectCompany"
+              />
+              <mat-error
+                *ngIf="projectForm.controls['projectCompany'].hasError('required')"
+              >
+                O nome da Empresa é <strong>Obrigatório</strong>
+              </mat-error>
+              
+            </mat-form-field>
+          </div>
+  
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="onReset()">
+            Cancelar
+          </button>
+          <button mat-raised-button color="primary" type="submit">Salvar</button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+  </form>
+  

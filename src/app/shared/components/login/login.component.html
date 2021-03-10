@@ -1,0 +1,67 @@
+<section id="login">
+  <form
+    [formGroup]="loginForm"
+    novalidate
+    (ngSubmit)="onSubmit()"
+    (keydown)="keyDownFunction($event)"
+  >
+    <mat-card class="form-card">
+      <div class="max-width">
+        <div class="card-title">
+          <h1>{{ title }}</h1>
+        </div>
+
+        <mat-card-content>
+          <div class="row">
+            <mat-form-field class="">
+              <input
+                type="email"
+                matInput
+                placeholder="E-mail"
+                formControlName="email"
+              />
+              <mat-error
+                *ngIf="loginForm.controls['email'].hasError('required')"
+              >
+                O E-mail é <strong>Obrigatório</strong>
+              </mat-error>
+              <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                Informe um <strong>E-amil</strong> válido.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field class="">
+              <input
+                type="password"
+                matInput
+                placeholder="Senha"
+                formControlName="password"
+              />
+              <mat-error
+                *ngIf="loginForm.controls['password'].hasError('required')"
+              >
+                A senha é <strong>Obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+
+        <mat-card-actions class="actions">
+          <button mat-raised-button color="warn" (click)="onReset()">
+            Cancelar
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!loginForm.valid"
+          >
+            Entrar
+          </button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+  </form>
+</section>
