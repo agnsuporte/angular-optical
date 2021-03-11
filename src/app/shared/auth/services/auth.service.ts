@@ -45,19 +45,19 @@ export class AuthService {
       );
   }
 
-  logout() {
+  logout(): void {
     this.doLogoutUser();
   }
 
-  isLoggedIn() {
+  isLoggedIn(): boolean {
     return !!this.getJwtToken();
   }
 
-  getJwtToken() {
+  getJwtToken(): string {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  getJwtHeardOptions() {
+  getJwtHeardOptions(): HttpHeaders {
     let loggedToken: string;
     const logged = this.isLoggedIn();
 
@@ -77,23 +77,21 @@ export class AuthService {
     return options;
   }
 
-
-  private doLoginUser(data: UserLogged) {
+  private doLoginUser(data: UserLogged): void {
     this.loggedUser = data.username;
     this.storeJwtToken(data.token);
   }
 
-  private doLogoutUser() {
+  private doLogoutUser(): void {
     this.loggedUser = null;
     this.removeJwtToken();
   }
 
-  private storeJwtToken(jwt: string) {
+  private storeJwtToken(jwt: string): void {
     localStorage.setItem(this.JWT_TOKEN, jwt);
   }
 
-  private removeJwtToken() {
+  private removeJwtToken(): void {
     localStorage.removeItem(this.JWT_TOKEN);
   }
- 
 }

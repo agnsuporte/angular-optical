@@ -12,7 +12,7 @@ import { UtilService } from 'src/app/shared/services/util.service';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent implements OnInit {
-  title: String = '';
+  title: string;
   dataSource: Project;
 
   private flagUpdate = false;
@@ -36,17 +36,16 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
 
-
-    console.log("Url Teste: ", this.activatedRoute.snapshot)
+    console.log('Url Teste: ', this.activatedRoute.snapshot);
 
     if (id) {
       this.title = 'Atualizar Projeto';
       this.projectService.readById(id).subscribe((project) => {
         this.dataSource = project;
-        this.projectForm.controls['projectName'].setValue(
+        this.projectForm.controls.projectName.setValue(
           this.dataSource.projectName
         );
-        this.projectForm.controls['projectCompany'].setValue(
+        this.projectForm.controls.projectCompany.setValue(
           this.dataSource.projectCompany
         );
         this.flagUpdate = true;

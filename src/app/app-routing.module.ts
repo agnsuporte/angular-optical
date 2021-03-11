@@ -47,7 +47,6 @@ const routes: Routes = [
             (m) => m.NetworksModule
           ),
       },
-      
     ],
   },
   {
@@ -61,7 +60,6 @@ const routes: Routes = [
     path: '**',
     component: PageNotFoundComponent,
   },
-  
 ];
 
 @NgModule({

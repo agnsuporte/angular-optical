@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProjectsComponent } from './projects.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
-import { FormModule } from './form/form.module'
+import { FormModule } from './form/form.module';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
@@ -23,7 +23,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatSortModule,
     MatDividerModule,
     MatButtonModule,
-    FormModule
-  ]
+    FormModule,
+  ],
 })
-export class ProjectsModule { }
+export class ProjectsModule {}

@@ -7,6 +7,5 @@ export interface Project {
   updatedAt?: Date;
   Networks?: {
     networkName: string;
-  }
+  };
 }
-

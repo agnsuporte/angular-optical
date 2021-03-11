@@ -15,7 +15,8 @@ interface MenuItem {
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
-  _isLogged: Boolean;
+  isLoggedIn: boolean;
+  menuItens: MenuItem[];
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -23,24 +24,23 @@ export class NavigationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._isLogged = this.auth.isLoggedIn();
+    this.isLoggedIn = this.auth.isLoggedIn();
+    this.menuItens = [
+      { label: 'Cabos', linkTo: 'cables' },
+      { label: 'Dispositivos', linkTo: 'devices' },
+      { label: 'Rede', linkTo: 'networks' },
+    ];
   }
 
-  isHandset: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
+  isHandset(): Observable<boolean> {
+    return this.breakpointObserver.observe(Breakpoints.Handset).pipe(
       map((result) => result.matches),
       shareReplay()
     );
+  }
 
-  menuItens: MenuItem[] = [
-    { label: 'Cabos', linkTo: 'cables' },
-    { label: 'Dispositivos', linkTo: 'devices' },
-    { label: 'Rede', linkTo: 'networks' },
-  ];
-
-  onLogoff() {
+  onLogoff(): void {
     this.auth.logout();
-    this._isLogged = false;
+    this.isLoggedIn = false;
   }
 }

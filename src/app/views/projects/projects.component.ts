@@ -44,8 +44,6 @@ export class ProjectsComponent implements OnInit {
     this.loadingData();
   }
 
-  ngAfterViewInit() {}
-
   private loadingData(): void {
     this.projectService.read().subscribe(
       (data) => {
@@ -55,12 +53,11 @@ export class ProjectsComponent implements OnInit {
         this.table.dataSource = this.dataSource;
       },
       (error) => {
-
-        if(error.token) {
+        if (error.token) {
           this.router.navigate(['/login']);
         } else {
           this.util.showMessage('(LOADPROJECTS) Algo deu errado.', true);
-          console.log("Ocorreu um ERROR ao tentar listar Projetos.");
+          console.log('Ocorreu um ERROR ao tentar listar Projetos.');
         }
       }
     );

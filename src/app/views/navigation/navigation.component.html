@@ -18,7 +18,7 @@
         {{ menu.label }}
       </a>
 
-      <a mat-list-item href="/" *ngIf="_isLogged" (click)="onLogoff()">
+      <a mat-list-item href="/" *ngIf="isLoggedIn" (click)="onLogoff()">
         Sair
       </a>
     </mat-nav-list>
@@ -42,7 +42,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </a>
 
-      <mat-nav-list *ngIf="!(isHandset | async)">
+      <mat-nav-list *ngIf="(isHandset | async) === false">
         <a
           mat-list-item
           href="#"

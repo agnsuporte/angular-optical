@@ -16,7 +16,7 @@ interface Login {
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  title: String = 'Login';
+  title: string;
   dataSource: Login;
 
   loginForm = this.formBuilder.group({
@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     private util: UtilService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.title = 'Login';
+  }
 
   onSubmit(): void {
     if (this.loginForm.status === 'VALID') {
@@ -40,19 +42,19 @@ export class LoginComponent implements OnInit {
         (data) => {
           if (data) {
             this.router.navigate(['/']);
-          } 
+          }
         },
         (error) => {
-          this.util.showMessage('Ops!!! Algo deu errado.')
+          this.util.showMessage('Ops!!! Algo deu errado.');
           console.log('Ops!!! Algo deu errado.');
         }
       );
     }
   }
 
-  keyDownFunction(event) {
+  keyDownFunction(event): void {
     if (event.keyCode === 13) {
-      this.onSubmit()
+      this.onSubmit();
     }
   }
 
