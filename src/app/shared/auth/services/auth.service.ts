@@ -57,7 +57,7 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  getJwtHeardOptions(): HttpHeaders {
+  getJwtHeardOptions(): Object {
     let loggedToken: string;
     const logged = this.isLoggedIn();
 
