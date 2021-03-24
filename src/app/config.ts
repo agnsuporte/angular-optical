@@ -1,3 +1,3 @@
 export const config = {
-  apiUrl: 'http://localhost:5000/api/v1',
+  apiUrl: 'https://credit.agnsuporte.com/api/v1',
 };

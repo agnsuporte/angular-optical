@@ -18,7 +18,7 @@
         {{ menu.label }}
       </a>
 
-      <a mat-list-item href="/" *ngIf="isLoggedIn" (click)="onLogoff()">
+      <a mat-list-item href="/" *ngIf="isLogged" (click)="onLogoff()">
         Sair
       </a>
     </mat-nav-list>
@@ -51,7 +51,7 @@
         >
           {{ menu.label }}
         </a>
-        <a mat-list-item href="/" *ngIf="isLoggedIn" (click)="onLogoff()">
+        <a mat-list-item href="/" *ngIf="isLogged" (click)="onLogoff()">
           Sair
         </a>
       </mat-nav-list>
